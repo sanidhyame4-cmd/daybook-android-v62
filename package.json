@@ -1,0 +1,25 @@
+{
+  "name": "daybook-android-v62",
+  "version": "6.2.0",
+  "private": true,
+  "type": "module",
+  "description": "Daybook v6.2 AI-free Android app using Capacitor",
+  "scripts": {
+    "build:web": "esbuild www/native-bridge.js --bundle --format=esm --outfile=www/native-bridge.bundle.js",
+    "android:setup": "npm run build:web && node scripts/setup-android.mjs",
+    "android:sync": "npx cap sync android",
+    "android:build": "npm run android:setup && node scripts/run-gradle.mjs assembleDebug",
+    "android:open": "npx cap open android"
+  },
+  "dependencies": {
+    "@capacitor/android": "^7.4.3",
+    "@capacitor/core": "^7.4.3",
+    "@capacitor/filesystem": "^7.0.2",
+    "@capacitor/local-notifications": "^7.0.2",
+    "@capacitor/share": "^7.0.2"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^7.4.3",
+    "esbuild": "^0.25.0"
+  }
+}
